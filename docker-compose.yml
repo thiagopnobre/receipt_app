@@ -1,0 +1,7 @@
+services:
+  app:
+    build:
+      context: .
+    command: ruby app.rb
+    volumes:
+      - .:/app
