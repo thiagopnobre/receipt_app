@@ -9,14 +9,14 @@ RSpec.describe Lib::Models::Item do
         quantity: 2,
         product: 'book',
         amount: 12.49,
-        category: 'food',
+        category: 'books',
         imported: false
       )
 
       expect(item.quantity).to eq 2
       expect(item.product).to eq 'book'
       expect(item.amount).to eq 12.49
-      expect(item.category).to eq 'food'
+      expect(item.category).to eq 'books'
       expect(item.imported).to be false
       expect(item.tax).to eq 0.0
     end
@@ -24,16 +24,16 @@ RSpec.describe Lib::Models::Item do
     it 'initializes an item with import duty tax if it is exempt and imported' do
       item = described_class.new(
         quantity: 2,
-        product: 'book',
+        product: 'imported book',
         amount: 12.49,
-        category: 'food',
+        category: 'books',
         imported: true
       )
 
       expect(item.quantity).to eq 2
-      expect(item.product).to eq 'book'
+      expect(item.product).to eq 'imported book'
       expect(item.amount).to eq 12.49
-      expect(item.category).to eq 'food'
+      expect(item.category).to eq 'books'
       expect(item.imported).to be true
       expect(item.tax).to eq described_class::IMPORT_DUTY
     end
@@ -41,14 +41,14 @@ RSpec.describe Lib::Models::Item do
     it 'initializes an item with basic sales tax if it is not exempt and not imported' do
       item = described_class.new(
         quantity: 2,
-        product: 'book',
+        product: 'music CD',
         amount: 12.49,
         category: 'other',
         imported: false
       )
 
       expect(item.quantity).to eq 2
-      expect(item.product).to eq 'book'
+      expect(item.product).to eq 'music CD'
       expect(item.amount).to eq 12.49
       expect(item.category).to eq 'other'
       expect(item.imported).to be false
@@ -59,14 +59,14 @@ RSpec.describe Lib::Models::Item do
        'it is imported' do
       item = described_class.new(
         quantity: 2,
-        product: 'book',
+        product: 'imported music CD',
         amount: 12.49,
         category: 'other',
         imported: true
       )
 
       expect(item.quantity).to eq 2
-      expect(item.product).to eq 'book'
+      expect(item.product).to eq 'imported music CD'
       expect(item.amount).to eq 12.49
       expect(item.category).to eq 'other'
       expect(item.imported).to be true

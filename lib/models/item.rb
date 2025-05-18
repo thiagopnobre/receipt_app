@@ -23,7 +23,7 @@ module Lib
       def calculate_tax
         @tax = 0.0
         @tax += BASIC_SALES_TAX unless EXEMPT_CATEGORIES.include?(@category)
-        @tax += IMPORT_DUTY if imported
+        @tax += IMPORT_DUTY if @imported
       end
     end
   end
