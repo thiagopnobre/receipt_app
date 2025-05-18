@@ -6,6 +6,10 @@ module Lib
     end
 
     class ItemParser
+      BOOKS = %w[book].freeze
+      FOOD = %w[chocolate].freeze
+      MEDICAL = %w[pill].freeze
+
       def parse(item_str:)
         result = item_str.match(/^(\d+) (.*?) at (\d+\.\d{2})$/)
 
@@ -22,7 +26,15 @@ module Lib
 
       private
 
-      def category(_product) = 'other'
+      def category(product)
+        return 'books' if BOOKS.any? { |entry| product.include?(entry) }
+
+        return 'food' if FOOD.any? { |entry| product.include?(entry) }
+
+        return 'medical' if MEDICAL.any? { |entry| product.include?(entry) }
+
+        'other'
+      end
 
       def imported?(product) = product.include?('imported')
     end
