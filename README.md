@@ -9,6 +9,7 @@ Built in [Ruby](https://www.ruby-lang.org/).
 1. The format of the basket items will always be the same as in the examples ("quantity product at amount" or "quantity imported product at amount").
 2. The product categories will be fixed (books, food and medical) and have fixed patterns (explanation below).
 3. The product examples are the only ones available and their names can be used to form the category patterns (the only available pattern for books is book, for food is chocolate and for medical is pill).
+4. The baskets will be given in files in the folder `/baskets` of the project.
 
 ## Getting started
 
@@ -76,6 +77,12 @@ There are two ways to run this project:
 </details>
 
 
+
+## Adding new bakets
+
+The project run with the baskets in the folder `/baskets`.
+
+To add a new basket, add a new file in the folder with the same lines format.
 
 ## Tests
 
