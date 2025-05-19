@@ -61,8 +61,8 @@ RSpec.describe Lib::Models::Receipt do
     it 'initializes with the right sales_taxes and the right total for the given items' do
       receipt = described_class.new(items:)
 
-      expect(receipt.sales_taxes).to eq 9.13
-      expect(receipt.total).to eq 107.44
+      expect(receipt.sales_taxes).to eq 9.15
+      expect(receipt.total).to eq 107.45
     end
   end
 end

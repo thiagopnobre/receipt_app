@@ -14,14 +14,18 @@ module Lib
       private
 
       def calculate_sales_taxes
-        @sales_taxes = items.sum { |item| (item.quantity * item.amount * item.tax).round(2) }
-        @sales_taxes = @sales_taxes.round(2)
+        @sales_taxes = items.sum do |item|
+          round_to_the_nearest(item.quantity * item.amount * item.tax)
+        end.round(2)
       end
 
       def calculate_total
-        @total = items.sum { |item| (item.quantity * item.amount * (1 + item.tax)).round(2) }
-        @total = @total.round(2)
+        @total = items.sum do |item|
+          round_to_the_nearest(item.quantity * item.amount * (1 + item.tax))
+        end.round(2)
       end
+
+      def round_to_the_nearest(value) = (value * 20.0).round / 20.0
     end
   end
 end
