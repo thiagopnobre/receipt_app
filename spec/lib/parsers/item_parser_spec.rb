@@ -3,7 +3,7 @@
 require './lib/parsers/item_parser'
 
 RSpec.describe Lib::Parsers::ItemParser do
-  describe '#initialize' do
+  describe '#parse' do
     context 'when the item string is invalid' do
       it 'raises an error' do
         expect {
